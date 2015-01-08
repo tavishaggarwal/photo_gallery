@@ -7,12 +7,14 @@ class Session{
     public $message;
 
     function __construct(){
+
         session_start();
         $this->check_message();
         $this->check_login();
     }
 
     public function check_message(){
+
       if(isset($_SESSION['message'])){
         $this->message = $_SESSION['message'];
         unset($_SESSION['message']);
@@ -20,12 +22,14 @@ class Session{
     }
 
     public function message($msg){
+
       if(!empty($msg)){
         $_SESSION['message'] = $msg;
       }
     }
 
     private function check_login() {
+      
           if(isset($_SESSION['id'])) {
             $this->user_id = $_SESSION['id'];
             $this->logged_in = true;
