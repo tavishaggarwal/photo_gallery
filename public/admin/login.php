@@ -63,6 +63,7 @@ if(isset($_POST['submit'])){
           <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Login" name="submit">
           <a href="register.php" target="_blank"><input type="button" class="btn btn-primary" value="Register"></a>
+          <a href="../view_images.php" target="_blank"><input type="button" class="btn btn-primary" value="View"></a>
           </div>
 
          <!--  <div class="form-group">

@@ -19,7 +19,8 @@ if(!$session->is_logged_in()){
 <a href="logout.php">LOGOUT </a><br />
 
 <a href="photo_upload.php">CLICK TO UPLOAD PHOTO</a><br />
-<a href="list_photo.php">CLICK TO VIEW PHOTO</a><br />
+<a href="list_photo.php">CLICK TO VIEW PHOTO TABLE</a><br />
+<a href="../view_images.php">CLICK TO VIEW PHOTO</a><br />
 
 </body>
 </html>

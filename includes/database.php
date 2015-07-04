@@ -14,8 +14,29 @@ class MYSQLDatabase{
     private $dbh;
     private $error;
     private $stmt;
+    public $n ="hi";
+    
+    public function __construct(){
+   
+        // Set DSN
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;  // for mysql database
+        // Set options
+        $options = array(
+        PDO::ATTR_PERSISTENT    => true,
+        PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_ERRMODE       => PDO::ERRMODE_SILENT
+        );
+        // Create a new PDO instanace
+        try{
+        $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+        }
+        // Catch any errors
+        catch(PDOException $e){
+        echo $this->error = $e->getMessage();
+        }
+    }
 
- 
+
     public function authenticate($username, $password){
 
         $result= $this->query("SELECT * FROM " .self::$table_name. " WHERE 
@@ -30,25 +51,6 @@ class MYSQLDatabase{
         }
     }
 
-    public function __construct(){
-       
-        // Set DSN
-        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
-        // Set options
-        $options = array(
-        PDO::ATTR_PERSISTENT    => true,
-        PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_ERRMODE       => PDO::ERRMODE_SILENT
-        );
-        // Create a new PDO instanace
-        try{
-        $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-        }
-        // Catch any errors
-        catch(PDOException $e){
-        $this->error = $e->getMessage();
-        }
-    }
 
     public function query($query){
 
@@ -106,6 +108,5 @@ class MYSQLDatabase{
 }
 
 $database = new MYSQLDatabase();
-
 
 ?>
